@@ -94,7 +94,9 @@ function getPrice()
             events[i].price*=0.5;
 
           //Step3
+
           var commission=events[i].price*0.3;
+          var amountBar=events[i].price-commission;
           events[i].commission.insurance=commission/2;
           var treasury=1*events[i].persons;
           events[i].commission.treasury=treasury;
@@ -108,19 +110,40 @@ function getPrice()
             events[i].commission.privateaser+=1*events[i].persons;
 
           }
+          //Step 5
+          for(var x = 0 ; x < actors.length ; x++)
+          {
+            if(actors[x].eventId==events[i].id)
+            {
+              for(var z =0 ; z < actors[x].payment.length; z++)
+              {
+                if(actors[x].payment[z].who=='booker')
+                  actors[x].payment[z].amount=events[i].price;
 
-            
+                if(actors[x].payment[z].who=='bar')
+                  actors[x].payment[z].amount=amountBar;
 
+                if(actors[x].payment[z].who=='insurance')
+                  actors[x].payment[z].amount=events[i].commission.insurance;
+
+                if(actors[x].payment[z].who=='treasury')
+                  actors[x].payment[z].amount=events[i].commission.treasury;
+
+                if(actors[x].payment[z].who=='privateaser')
+                  actors[x].payment[z].amount=events[i].commission.privateaser;
+              }
+            }
+          }
         }
       }
     }
   }
 }
 
-function getBar(id)
+/*function getBar(id)
 {
   return bars.find(bar => bar.id===id);
-}
+}*/
 
 //list of actors for payment
 //useful from step 5
