@@ -92,6 +92,14 @@ function getPrice()
           
           if(events[i].persons> 60)
             events[i].price*=0.5;
+
+          //Step3
+          var commission=events[i].price*0.3;
+          events[i].commission.insurance=commission/2;
+          var treasury=1*events[i].persons;
+          events[i].commission.treasury=treasury;
+          events[i].commission.privateaser=commission-(events[i].commission.insurance+treasury);
+          alert("test" + events[i].commission.privateaser);
         }
       }
     }
