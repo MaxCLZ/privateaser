@@ -83,6 +83,15 @@ function getPrice()
         if(events[i].barId == bars[y].id)
         {
           events[i].price=bars[y].pricePerHour*events[i].time+bars[y].pricePerPerson*events[i].persons;
+
+          if(events[i].persons> 10 && events[i].persons <=20)
+            events[i].price*=0.9;
+
+          if(events[i].persons> 20  && events[i].persons <=30)
+            events[i].price*=0.7;
+          
+          if(events[i].persons> 60)
+            events[i].price*=0.5;
         }
       }
     }
