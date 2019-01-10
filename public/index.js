@@ -101,6 +101,16 @@ function getPrice()
           events[i].commission.privateaser=commission-(events[i].commission.insurance+treasury);
           
 
+          //Step4
+          if(events[i].options.deductibleReduction)
+          {
+            events[i].price+=1*events[i].persons;
+            events[i].commission.privateaser+=1*events[i].persons;
+
+          }
+
+            
+
         }
       }
     }
