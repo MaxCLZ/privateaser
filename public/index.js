@@ -99,7 +99,8 @@ function getPrice()
           var treasury=1*events[i].persons;
           events[i].commission.treasury=treasury;
           events[i].commission.privateaser=commission-(events[i].commission.insurance+treasury);
-          alert("test" + events[i].commission.privateaser);
+          
+
         }
       }
     }
