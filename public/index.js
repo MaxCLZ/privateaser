@@ -73,6 +73,27 @@ const events = [{
   }
 }];
 
+function getPrice()
+{
+  for(var i = 0; i < events.length; i++)
+  {
+    {
+      for(var y = 0 ; y < bars.length; y++)
+      {
+        if(events[i].barId == bars[y].id)
+        {
+          events[i].price=bars[y].pricePerHour*events[i].time+bars[y].pricePerPerson*events[i].persons;
+        }
+      }
+    }
+  }
+}
+
+function getBar(id)
+{
+  return bars.find(bar => bar.id===id);
+}
+
 //list of actors for payment
 //useful from step 5
 const actors = [{
@@ -149,3 +170,5 @@ const actors = [{
 console.log(bars);
 console.log(events);
 console.log(actors);
+getPrice();
+
